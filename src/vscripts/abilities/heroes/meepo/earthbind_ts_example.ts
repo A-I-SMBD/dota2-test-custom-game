@@ -7,7 +7,9 @@ export class meepo_earthbind_ts_example extends BaseAbility {
     GetCooldown() {
         let cooldown = this.GetSpecialValueFor("cooldown");
         if (IsServer()) {
-            const talent = this.GetCaster().FindAbilityByName("special_bonus_unique_meepo_3");
+            const talent = this.GetCaster().FindAbilityByName(
+                "special_bonus_unique_meepo_3"
+            );
             if (talent) {
                 cooldown -= talent.GetSpecialValueFor("value");
             }
@@ -33,7 +35,9 @@ export class meepo_earthbind_ts_example extends BaseAbility {
         const point = this.GetCursorPosition();
         const projectileSpeed = this.GetSpecialValueFor("speed");
 
-        const direction = ((point - caster.GetAbsOrigin()) as Vector).Normalized();
+        const direction = (
+            (point - caster.GetAbsOrigin()) as Vector
+        ).Normalized();
         direction.z = 0;
         const distance = ((point - caster.GetAbsOrigin()) as Vector).Length();
 
@@ -41,12 +45,20 @@ export class meepo_earthbind_ts_example extends BaseAbility {
         this.particle = ParticleManager.CreateParticle(
             "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf",
             ParticleAttachment.CUSTOMORIGIN,
-            caster,
+            caster
         );
 
-        ParticleManager.SetParticleControl(this.particle, 0, caster.GetAbsOrigin());
+        ParticleManager.SetParticleControl(
+            this.particle,
+            0,
+            caster.GetAbsOrigin()
+        );
         ParticleManager.SetParticleControl(this.particle, 1, point);
-        ParticleManager.SetParticleControl(this.particle, 2, Vector(projectileSpeed, 0, 0));
+        ParticleManager.SetParticleControl(
+            this.particle,
+            2,
+            Vector(projectileSpeed, 0, 0)
+        );
 
         ProjectileManager.CreateLinearProjectile({
             Ability: this,
@@ -81,11 +93,13 @@ export class meepo_earthbind_ts_example extends BaseAbility {
             UnitTargetType.BASIC | UnitTargetType.HERO,
             UnitTargetFlags.NONE,
             0,
-            false,
+            false
         );
 
         for (const unit of units) {
-            unit.AddNewModifier(caster, this, "modifier_meepo_earthbind", { duration });
+            unit.AddNewModifier(caster, this, "modifier_meepo_earthbind", {
+                duration,
+            });
             unit.EmitSound("Hero_Meepo.Earthbind.Target");
         }
 

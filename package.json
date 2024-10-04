@@ -1,5 +1,5 @@
 {
-    "name": "test_addon",
+    "name": "dota2_test_custom_game",
     "private": true,
     "scripts": {
         "postinstall": "node scripts/install.js",
