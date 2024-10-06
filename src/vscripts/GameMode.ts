@@ -34,6 +34,7 @@ export class GameMode {
 
             // Respond by sending back an example event
             const player = PlayerResource.GetPlayer(data.PlayerID)!;
+            
             CustomGameEventManager.Send_ServerToPlayer(player, "example_event", {
                 myNumber: 42,
                 myBoolean: true,
@@ -48,19 +49,23 @@ export class GameMode {
     }
 
     private configure(): void {
-        GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.GOODGUYS, 3);
-        GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.BADGUYS, 3);
+        GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.GOODGUYS, 1);
+        GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.BADGUYS, 1);
 
         GameRules.SetShowcaseTime(0);
+        GameRules.AddHeroIDToWhitelist(86);       // Add rubick to whitelist
+
+        GameRules.SetHideBlacklistedHeroes(true); // Hide all blacklisted heroes
+
         GameRules.SetHeroSelectionTime(heroSelectionTime);
     }
 
     public OnStateChange(): void {
         const state = GameRules.State_Get();
 
-        // Add 4 bots to lobby in tools
+        // Add 1 bot to lobby in tools
         if (IsInToolsMode() && state == GameState.CUSTOM_GAME_SETUP) {
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 1; i++) {
                 Tutorial.AddBot("npc_dota_hero_lina", "", "", false);
             }
         }
