@@ -53,11 +53,11 @@ export class meepo_earthbind_ts_example extends BaseAbility {
             0,
             caster.GetAbsOrigin()
         );
-        ParticleManager.SetParticleControl(this.particle, 1, point);
+       // ParticleManager.SetParticleControl(this.particle, 1, point);
         ParticleManager.SetParticleControl(
             this.particle,
             2,
-            Vector(projectileSpeed, 0, 0)
+            Vector(projectileSpeed, projectileSpeed, 0)
         );
 
         ProjectileManager.CreateLinearProjectile({

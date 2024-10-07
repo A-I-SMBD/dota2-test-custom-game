@@ -1,0 +1,18 @@
+// not working
+
+"lang"
+{
+	"Language"		"English"
+	"Tokens"
+	{
+        "addon_game_name"			"TicTacToes"
+        "DOTA_Tooltip_ability_custom_blade"
+			"Custom Blade"
+
+		"DOTA_Tooltip_ability_custom_blade_Description"
+			"Someone coded it. Someone told us that it usable."
+
+		"DOTA_Tooltip_ability_custom_blade_Lore"
+			"We don't know what is it..."
+    }
+}

@@ -1,0 +1,18 @@
+// not working
+
+"lang"
+{
+	"Language"		"Russian"
+	"Tokens"
+	{
+        "addon_game_name"			"Кресты"
+        "DOTA_Tooltip_ability_custom_blade"
+			"Custom Blade"
+
+		"DOTA_Tooltip_ability_custom_blade_Description"
+			"Врятли ты сможешь это использовать."
+
+		"DOTA_Tooltip_ability_custom_blade_Lore"
+			"Если бы мы знали что это такое..."
+    }
+}

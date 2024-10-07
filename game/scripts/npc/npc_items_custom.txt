@@ -1,0 +1,36 @@
+
+	
+"DOTAAbilities"
+{
+    //=================================================================================================================
+	// Quelling Blade
+	//=================================================================================================================
+
+    "item_custom_blade"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1001"
+		"BaseClass"                     "item_datadriven"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		
+        "ItemCost" "322"
+        "ItemKillable" "0"
+        "ItemSellable" "1"
+        "ItemPurchasable" "1"
+        "ItemDroppable" "1"
+
+        "ItemStockMax" "1"
+        "ItemStockTime" "100"
+        "ItemStockInitial" "3"
+
+        "ItemShareability" "ITEM_FULLY_SHAREABLE" 
+
+        "AbilityTextureName" "item_custom_blade"
+
+        "SideShop" "1"
+        "SecretShop" "1"
+
+
+	}
+
+}

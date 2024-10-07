@@ -1,3 +1,4 @@
+//import { item_quelling_blade_ts } from "./items/item_quelling_blade_ts";
 import { reloadable } from "./lib/tstl-utils";
 import { modifier_panic } from "./modifiers/modifier_panic";
 
@@ -45,18 +46,20 @@ export class GameMode {
             // Also apply the panic modifier to the sending player's hero
             const hero = player.GetAssignedHero();
             hero.AddNewModifier(hero, undefined, modifier_panic.name, { duration: 5 });
+            // hero.AddItem(11);
+            
         });
     }
+
+
 
     private configure(): void {
         GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.GOODGUYS, 1);
         GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.BADGUYS, 1);
 
         GameRules.SetShowcaseTime(0);
-        GameRules.AddHeroIDToWhitelist(86);       // Add rubick to whitelist
-
-        GameRules.SetHideBlacklistedHeroes(true); // Hide all blacklisted heroes
-
+        //GameRules.AddHeroIDToWhitelist(86);       // Add rubick to whitelist
+        //GameRules.SetHideBlacklistedHeroes(true); // Hide all blacklisted heroes  
         GameRules.SetHeroSelectionTime(heroSelectionTime);
     }
 
@@ -81,7 +84,7 @@ export class GameMode {
 
         // Start game once pregame hits
         if (state === GameState.PRE_GAME) {
-            Timers.CreateTimer(0.2, () => this.StartGame());
+            Timers.CreateTimer(30.0, () => this.StartGame());
         }
     }
 
@@ -106,6 +109,12 @@ export class GameMode {
             if (!unit.HasAbility("meepo_earthbind_ts_example")) {
                 // Add lua ability to the unit
                 unit.AddAbility("meepo_earthbind_ts_example");
+            }
+
+            if(!unit.HasItemInInventory("item_custom_blade")){
+                
+                unit.AddItemByName("item_custom_blade");
+                unit.AddItemByName("item_quelling_blade");
             }
         }
     }
